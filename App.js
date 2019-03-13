@@ -1,21 +1,26 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react'
+import { KeyboardAvoidingView, Text, Button } from 'react-native'
+import { createAppContainer, createStackNavigator, StackActions, NavigationActions } from 'react-navigation'
 
-export default class App extends React.Component {
+import Login from './components/Login'
+
+class HomeScreen extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-      </View>
+      <KeyboardAvoidingView style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }} behavior="padding" enabled>
+        <Login />
+      </KeyboardAvoidingView>
     );
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+
+const AppNavigator = createStackNavigator({
+  Home: {
+    screen: HomeScreen,
   },
+}, {
+    initialRouteName: 'Home',
 });
+
+export default createAppContainer(AppNavigator);
