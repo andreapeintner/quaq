@@ -15,19 +15,6 @@ class Login extends Component {
           value={this.state.username}
           onChangeText={(username) => this.setState({username})}
         />
-        <Button
-          // onPress={() => {
-          //   this.props.navigation.dispatch(StackActions.reset({
-          //     index: 0,
-          //     actions: [
-          //       NavigationActions.navigate({ routeName: 'Chat' })
-          //     ],
-          //   }))
-          // }}
-          title="Next"
-          color="#841584"
-          accessibilityLabel="Learn more about this purple button"
-        />
       </View>
     );
   }

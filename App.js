@@ -1,26 +1,21 @@
 import React from 'react'
 import { KeyboardAvoidingView, Text, Button } from 'react-native'
 import { createAppContainer, createStackNavigator, StackActions, NavigationActions } from 'react-navigation'
-
-import Login from './components/Login'
-
-class HomeScreen extends React.Component {
-  render() {
-    return (
-      <KeyboardAvoidingView style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }} behavior="padding" enabled>
-        <Login />
-      </KeyboardAvoidingView>
-    );
-  }
-}
+import Home from './src/screens/Home'
+import Chat from './src/screens/Chat'
 
 
 const AppNavigator = createStackNavigator({
-  Home: {
-    screen: HomeScreen,
-  },
+  Home,
+  Chat
 }, {
     initialRouteName: 'Home',
 });
 
-export default createAppContainer(AppNavigator);
+const AppContainer = createAppContainer(AppNavigator)
+
+export default class App extends React.Component {
+  render() {
+    return <AppContainer />
+  }
+};
