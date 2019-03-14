@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { View, StyleSheet, TextInput, Text, Button } from 'react-native';
+import React, { Component } from 'react'
+import { View, StyleSheet, TextInput, Text, Button } from 'react-native'
 
 
 class Login extends Component {
@@ -16,7 +16,7 @@ class Login extends Component {
           onChangeText={(username) => this.setState({username})}
         />
       </View>
-    );
+    )
   }
 }
 
@@ -30,6 +30,6 @@ const styles = StyleSheet.create({
     minWidth: 70,
     marginTop: 30,
   },
-});
+})
 
-export default Login;
+export default Login

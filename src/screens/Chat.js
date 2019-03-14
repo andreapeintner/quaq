@@ -1,6 +1,7 @@
 import React from 'react'
 import {
   KeyboardAvoidingView,
+  View,
   Text,
   TouchableHighlight,
   StyleSheet,
@@ -8,16 +9,28 @@ import {
   AlertIOS
 } from 'react-native'
 import { db } from '../config'
+import Messages from '../components/Messages'
+
 
 let addItem = item => {
   db.ref('/items').push({
     msg: item
   })
 }
+let msgRef = db.ref('/items')
 
 export default class Chat extends React.Component {
   state = {
-    msg: ''
+    msg: '',
+    items: []
+  }
+
+  componentDidMount() {
+    msgRef.on('value', snapshot => {
+      let data = snapshot.val()
+      let items = Object.values(data)
+      this.setState({ items })
+    })
   }
 
   handleChange = e => {
@@ -27,21 +40,20 @@ export default class Chat extends React.Component {
   }
 
   handleSubmit = () => {
-    addItem(this.state.msg);
-    AlertIOS.alert('Msg saved successfully');
+    addItem(this.state.msg)
   }
 
   render() {
     return (
       <KeyboardAvoidingView style={styles.main} behavior="padding" enabled>
-        <Text style={styles.title}>Chat</Text>
+        <Messages items={this.state.items} />
         <TextInput style={styles.itemInput} onChange={this.handleChange} />
         <TouchableHighlight
           style={styles.button}
           underlayColor="white"
           onPress={this.handleSubmit}
         >
-          <Text style={styles.buttonText}>Add</Text>
+          <Text style={styles.buttonText}>Send</Text>
         </TouchableHighlight>
       </KeyboardAvoidingView>
     )
@@ -55,11 +67,6 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
     backgroundColor: 'orange'
-  },
-  title: {
-    marginBottom: 20,
-    fontSize: 25,
-    textAlign: 'center'
   },
   itemInput: {
     height: 50,
@@ -88,4 +95,4 @@ const styles = StyleSheet.create({
     alignSelf: 'stretch',
     justifyContent: 'center'
   }
-});
+})

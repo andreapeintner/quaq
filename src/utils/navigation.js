@@ -16,4 +16,4 @@ const AppNavigator = createStackNavigator({
   Chat: {
     screen: Chat
   }
-});
+})

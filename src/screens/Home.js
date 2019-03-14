@@ -1,5 +1,5 @@
 import React from 'react'
-import { KeyboardAvoidingView, Button } from 'react-native'
+import { View, KeyboardAvoidingView, Button } from 'react-native'
 import Login from '../components/Login'
 
 export default class Home extends React.Component {
@@ -14,7 +14,7 @@ export default class Home extends React.Component {
           onPress={() => this.props.navigation.navigate('Chat')}
         />
       </KeyboardAvoidingView>
-    );
+    )
   }
 }
 
