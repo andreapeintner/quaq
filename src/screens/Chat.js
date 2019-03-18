@@ -12,25 +12,26 @@ import { db } from '../config'
 import Messages from '../components/Messages'
 
 
-let addItem = item => {
-  db.ref('/items').push({
-    msg: item
-  })
-}
-let msgRef = db.ref('/items')
+// let addItem = item => {
+//   db.ref('/nick').push({
+//     msg: item
+//   })
+// }
+
+//let msgRef = db.ref('nick/items')
 
 export default class Chat extends React.Component {
   state = {
     msg: '',
-    items: []
+    //items: [],
   }
 
   componentDidMount() {
-    msgRef.on('value', snapshot => {
-      let data = snapshot.val()
-      let items = Object.values(data)
-      this.setState({ items })
-    })
+    // msgRef.on('value', snapshot => {
+    //   let data = snapshot.val()
+    //   let items = Object.values(data)
+    //   this.setState({ items })
+    // })
   }
 
   handleChange = e => {
@@ -46,7 +47,7 @@ export default class Chat extends React.Component {
   render() {
     return (
       <KeyboardAvoidingView style={styles.main} behavior="padding" enabled>
-        <Messages items={this.state.items} />
+        <Messages nicks={this.state.nickname} />
         <TextInput style={styles.itemInput} onChange={this.handleChange} />
         <TouchableHighlight
           style={styles.button}

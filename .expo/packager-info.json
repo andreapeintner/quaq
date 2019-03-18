@@ -1,10 +1,10 @@
 {
   "devToolsPort": 19002,
-  "expoServerPort": 19000,
-  "packagerPort": 19001,
-  "packagerPid": 10566,
-  "expoServerNgrokUrl": "https://cf-4g7.andreapeintner.quack.exp.direct",
-  "packagerNgrokUrl": "https://packager.cf-4g7.andreapeintner.quack.exp.direct",
-  "ngrokPid": 10580,
+  "expoServerPort": null,
+  "packagerPort": null,
+  "packagerPid": null,
+  "expoServerNgrokUrl": null,
+  "packagerNgrokUrl": null,
+  "ngrokPid": null,
   "webpackServerPort": null
 }

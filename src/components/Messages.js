@@ -6,13 +6,21 @@ export default class ItemComponent extends Component {
   render() {
     return (
       <ScrollView contentContainerStyle={styles.itemsList}>
-        {this.props.items.map((item, index) => {
+
+        {this.props.nicks.map((nick, index) => {
+          return (
+            <View key={index}>
+              <Text style={styles.itemtext}>{nick.username}</Text>
+            </View>
+          )
+        })}
+        {/* {this.props.items.map((item, index) => {
           return (
             <View key={index}>
               <Text style={styles.itemtext}>{item.msg}</Text>
             </View>
           )
-        })}
+        })} */}
       </ScrollView>
     )
   }
